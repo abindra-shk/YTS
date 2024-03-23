@@ -317,10 +317,14 @@
                     color: white;
                     padding: 7px 0;
                     text-decoration: none;
+                    transition: 0.3s ease-in-out;
                     .material-symbols-outlined{
                         color: #428e21;
                         font-size: 28px;
                         margin-right: 10px;
+                    }
+                    &:hover{
+                        filter: brightness(0.8);
                     }
                 }
 
@@ -538,10 +542,12 @@
                 h3{
                     border-bottom: 1px solid #2f2f2f;
                     padding: 10px 0; 
+                    font-size: 24px;
+                    font-weight: bold
                 }
                 .list-cast{
                     overflow: hidden;
-                    border-bottom: 1px solid #2f2f2f;
+                    
                     padding: 10px 0;
                     color: #fff;
                     .cast{
@@ -549,9 +555,39 @@
                             text-decoration: none;
                             color:#919191;
                             font-size: 18px;
-                            border-bottom: 1px solid #2f2f2f;
+                            
                             padding: 10px 0;
 
+                        }
+                        .cast-member{
+                            display: flex;
+                            border-bottom: 1px solid #2f2f2f;
+                            padding: 10px 0;
+                            align-items: center;
+                            .image{
+                                height:40px;
+                                margin-right: 10px;
+                                
+                                img{
+                                    height:100%;
+                                    width:100%;
+                                    border-radius: 50px; 
+                                }  
+                            }
+                            .name{
+                                font-size: 14px;
+                                color:#919191;
+                                font-weight: bold;
+                                transition: .2s ;
+                            &:hover{
+                                color: white;
+                                cursor: pointer;
+    
+                            }    
+                            } 
+                            .character{
+                                font-size: 15px;
+                            }                    
                         }
                     }
                     
@@ -610,10 +646,16 @@
         .dialog-box{
             height:360px;
             width:100%;
+            // transform: translateY(100px);
             iframe{
                 height: 100%;
                 width:100%;
                 border: none;
+            }
+            img{
+                height: 100%;
+                width: 100%;
+                object-fit: cover;
             }
         }
         
