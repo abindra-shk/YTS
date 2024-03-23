@@ -13,6 +13,7 @@ export default function Details() {
     const [movies, setMovies] = useState([]);
     const [loading, setLoading] = useState(false);
     const [isVisible, setIsVisible] = useState(false);
+    const [isScreenVisible,setIsScreenVisible] = useState(false);
     const navigate = useNavigate();
     const {id} = useParams();
     const trailerurl = `https://www.youtube.com/embed/${movie.yt_trailer_code}`;
@@ -109,7 +110,9 @@ export default function Details() {
                             </div>
                         </div>
                     </div>
-                    <div className="screenshot"><img src={movie?.large_screenshot_image2}/></div>
+                    <div className="screenshot" onClick={()=>setIsScreenVisible(true)}>
+                        <img src={movie?.large_screenshot_image2}/>
+                    </div>
                     <div className="screenshot"><img src={movie?.large_screenshot_image3}/></div>
                 </div>
                 <div className="movie-info">
@@ -135,9 +138,9 @@ export default function Details() {
                                     {movie.cast?.map((a,key)=><>
                                         {/* <div key={key}><a href={a.name} target="_blank">{a.name}</a></div> */}
                                         <div className="cast-member">
-                                            <div key={key} className="image"><a href={'https://www.imdb.com/name/nm'+ x.imdb_code } target="_blank"><img src={x.url_small_image}/></a></div>
-                                            <div key={key} className="name">{x.name}&nbsp;</div>
-                                            <div className="character">as {x.character_name}</div>
+                                            <div key={key} className="image"><a href={'https://www.imdb.com/name/nm'+ a.imdb_code } target="_blank"><img src={a.url_small_image}/></a></div>
+                                            <div key={key} className="name">{a.name}&nbsp;</div>
+                                            <div className="character">as {a.character_name}</div>
                                         </div>
                                     </>)} 
                                 </div>
@@ -162,6 +165,9 @@ export default function Details() {
             <Dialog open={isVisible} close={()=>setIsVisible(false)}>
                 <iframe src={trailerurl}></iframe>
             </Dialog>  
+            <Dialog open={isScreenVisible} close={()=>setIsScreenVisible(false)}>
+                 <img src={movie?.large_screenshot_image2}/>
+            </Dialog>
 
     </>
 }
